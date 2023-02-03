@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #snowflakeContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100000;
+    }
+    .snowflake {
+      position: absolute;
+      cursor: default;
+      background-color: #fff;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      box-shadow: inset 0 0 10px #000;
+      -webkit-box-shadow: inset 0 0 10px #000;
+      -moz-box-shadow: inset 0 0 10px #000;
+      width: 15px;
+      height: 15px;
+      animation: snowflakeFall 0.5s linear infinite;
+      -webkit-animation: snowflakeFall 0.5s linear infinite;
+    }
+    @keyframes snowflakeFall {
+      0% {
+        top: -50px;
+      }
+      100% {
+        top: 100%;
+        left: 100%;
+      }
+    }
+    @-webkit-keyframes snowflakeFall {
+      0% {
+        top: -50px;
+      }
+      100% {
+        top: 100%;
+        left: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="snowflakeContainer">
+    <p class="snowflake"></p>
+  </div>
+  <script>
+    // number of snowflakes
+    var snowflakes = 100;
+    
+    // function to generate snowflakes and add them to the page
+    function generateSnowflakes() {
+      for (var i = 0; i < snowflakes; i++) {
+        var snowflake = document.createElement("p");
+        snowflake.className = "snowflake";
+        snowflake.style.left = Math.random() * 100 + "vw";
+        document.getElementById("snowflakeContainer").appendChild(snowflake);
+      }
+    }
+    
+    // call the function to generate snowflakes when the page loads
+    window.onload = function() {
+      generateSnowflakes();
+    };
+  </script>
+</body>
+</html>
